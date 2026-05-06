@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion';
+import { ArrowUpRight, Asterisk } from 'lucide-react';
 
 const PORTRAIT_URL = 'https://media.base44.com/images/public/69f811de984f384ae6db76b7/9e6d02293_Gemini_Generated_Image_6z01rp6z01rp6z01.png';
 
@@ -314,7 +315,7 @@ export default function HeroSection() {
               className="absolute inset-0 w-12 bg-gradient-to-r from-transparent via-primary/15 to-transparent pointer-events-none"
               style={{ transform: 'skewX(-20deg)' }}
             />
-            <span className="font-inter font-black text-primary text-xl">↗</span>
+            <ArrowUpRight size={20} className="text-primary shrink-0" />
             <div className="min-w-[110px]">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -335,9 +336,9 @@ export default function HeroSection() {
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-          className="absolute bottom-28 lg:bottom-12 left-4 lg:left-8 font-inter font-black text-5xl text-primary/20 select-none"
+          className="absolute bottom-28 lg:bottom-12 left-4 lg:left-8 text-primary/20 select-none"
         >
-          ✳
+          <Asterisk size={48} />
         </motion.div>
         <motion.div
           animate={{ scale: [1, 1.08, 1], opacity: [0.15, 0.05, 0.15] }}
