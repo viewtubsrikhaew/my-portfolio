@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Asterisk } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const navLinks = [
@@ -47,7 +47,7 @@ export default function Navbar() {
               animate={{ rotate: [0, 20, -20, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
               className="inline-block text-primary"
-            >✳</motion.span>
+            ><Asterisk size={20} className="inline" /></motion.span>
           </button>
 
           {/* Desktop */}
