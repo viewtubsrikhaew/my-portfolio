@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
 import WorkTimeline from '@/components/portfolio/WorkTimeline';
+import { Asterisk, ArrowUpRight } from 'lucide-react';
 import {
   RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer,
   BarChart, Bar, XAxis, YAxis, Cell,
@@ -60,7 +61,7 @@ export default function About() {
       {/* ── Navbar ── */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-primary/30 flex items-center justify-between px-6 md:px-12 py-4">
         <Link to="/" className="font-inter font-black text-xl tracking-tighter hover:text-primary transition-colors">
-          CT<span className="text-primary">✳</span>
+          CT<Asterisk size={18} className="text-primary inline" />
         </Link>
         <div className="flex items-center gap-6">
           <Link to="/" className="font-mono text-[10px] tracking-widest text-muted-foreground hover:text-primary transition-colors">← BACK TO PORTFOLIO</Link>
@@ -291,7 +292,7 @@ export default function About() {
                     {item.href
                       ? <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer"
                           className="font-inter font-bold text-sm text-foreground hover:text-primary transition-colors">
-                          {item.v} <span className="text-primary">↗</span>
+                          <span className="inline-flex items-center gap-1">{item.v} <ArrowUpRight size={14} className="text-primary inline" /></span>
                         </a>
                       : <span className="font-inter font-bold text-sm text-foreground">{item.v}</span>
                     }
@@ -305,7 +306,7 @@ export default function About() {
               {sent ? (
                 <motion.div key="ok" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
                   className="border-2 border-primary p-10 text-center">
-                  <div className="text-6xl mb-4">✳</div>
+                  <div className="flex justify-center mb-4 text-primary"><Asterisk size={56} /></div>
                   <div className="font-inter font-black text-3xl text-primary tracking-tighter">MESSAGE SENT!</div>
                   <div className="font-mono text-xs text-muted-foreground mt-2">I'll get back to you ASAP.</div>
                 </motion.div>
