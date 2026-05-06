@@ -1,0 +1,43 @@
+{
+  "name": "ContactInquiry",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Full name of the inquirer"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email address"
+    },
+    "subject": {
+      "type": "string",
+      "enum": [
+        "Finance / Risk Analytics",
+        "Graphic Design / Branding",
+        "Operations / Project",
+        "Collaboration",
+        "Other"
+      ],
+      "description": "Inquiry subject"
+    },
+    "message": {
+      "type": "string",
+      "description": "Message body"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "read",
+        "replied"
+      ],
+      "default": "new"
+    }
+  },
+  "required": [
+    "name",
+    "email",
+    "message"
+  ]
+}
