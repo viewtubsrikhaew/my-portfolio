@@ -117,7 +117,7 @@ function BannerSlide({ slide, idx, total }) {
       <div className={`font-mono text-[9px] tracking-[0.2em] text-center z-10 mt-6 leading-relaxed ${slide.accent ? 'text-background/60' : 'text-muted-foreground'}`}>
         {slide.detail}
       </div>
-      <div className={`absolute bottom-8 right-4 font-inter font-black text-4xl select-none z-10 ${slide.accent ? 'text-background/20' : 'text-primary/15'}`}>✳</div>
+      <div className={`absolute bottom-8 right-4 select-none z-10 ${slide.accent ? 'text-background/20' : 'text-primary/15'}`}><Asterisk size={36} /></div>
     </motion.div>
   );
 }
