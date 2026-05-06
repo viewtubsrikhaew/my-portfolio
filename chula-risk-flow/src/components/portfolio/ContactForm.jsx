@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { base44 } from '@/api/base44Client';
 import BlockReveal from './BlockReveal';
+import { Asterisk, ArrowUpRight, Sparkles } from 'lucide-react';
 
 const subjects = [
   'Finance / Risk Analytics',
@@ -92,7 +93,7 @@ export default function ContactForm() {
                   <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined}
                     rel="noopener noreferrer"
                     className="font-inter font-bold text-sm text-foreground hover:text-primary transition-colors">
-                    {item.value} <span className="text-primary">↗</span>
+                    <span className="inline-flex items-center gap-1">{item.value} <ArrowUpRight size={14} className="text-primary inline" /></span>
                   </a>
                 ) : (
                   <span className="font-inter font-bold text-sm text-foreground">{item.value}</span>
@@ -115,18 +116,18 @@ export default function ContactForm() {
                 <motion.div
                   animate={{ rotate: [0, 20, -20, 10, 0] }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="text-7xl mb-6"
+                  className="flex justify-center mb-6 text-primary"
                 >
-                  ✳
+                  <Asterisk size={64} />
                 </motion.div>
                 <div className="font-inter font-black text-3xl text-primary tracking-tighter">MESSAGE SENT!</div>
                 <div className="font-mono text-xs text-muted-foreground mt-3">I'll get back to you ASAP.</div>
                 <motion.div
                   animate={{ x: [0, 8, 0], opacity: [0.1, 0.3, 0.1] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute -bottom-4 -right-4 font-inter font-black text-primary text-8xl opacity-10 select-none"
+                  className="absolute -bottom-4 -right-4 text-primary opacity-10 select-none"
                 >
-                  ✦
+                  <Sparkles size={80} />
                 </motion.div>
               </motion.div>
             ) : (
@@ -223,8 +224,8 @@ export default function ContactForm() {
                 >
                   {loading ? (
                     <>
-                      <motion.span animate={{ rotate: 360 }} transition={{ duration: 0.6, repeat: Infinity, ease: 'linear' }}>
-                        ✳
+                      <motion.span animate={{ rotate: 360 }} transition={{ duration: 0.6, repeat: Infinity, ease: 'linear' }} className="inline-flex">
+                        <Asterisk size={18} />
                       </motion.span>
                       SENDING...
                     </>
@@ -298,7 +299,7 @@ export default function ContactForm() {
                     <div className="font-inter font-black text-sm tracking-tight">LINKEDIN</div>
                     <div className="font-mono text-[8px] tracking-widest text-primary/70 group-hover:text-background/70">/in/chulachak-tubsikhaew</div>
                   </div>
-                  <span className="ml-auto font-mono text-lg">↗</span>
+                  <ArrowUpRight size={16} className="ml-auto" />
                 </motion.a>
                 <motion.a
                   href="https://www.facebook.com/julajak.tusikhaew.3"
@@ -314,7 +315,7 @@ export default function ContactForm() {
                     <div className="font-inter font-black text-sm tracking-tight">FACEBOOK</div>
                     <div className="font-mono text-[8px] tracking-widest text-primary/70">julajak.tusikhaew</div>
                   </div>
-                  <span className="ml-auto font-mono text-lg">↗</span>
+                  <ArrowUpRight size={16} className="ml-auto" />
                 </motion.a>
                 <motion.a
                   href="https://www.instagram.com/view.cct?igsh=MTV1NzBlM2lmNG44eA%3D%3D&utm_source=qr"
@@ -330,7 +331,7 @@ export default function ContactForm() {
                     <div className="font-inter font-black text-sm tracking-tight">INSTAGRAM</div>
                     <div className="font-mono text-[8px] tracking-widest text-primary/70">@view.cct</div>
                   </div>
-                  <span className="ml-auto font-mono text-lg">↗</span>
+                  <ArrowUpRight size={16} className="ml-auto" />
                 </motion.a>
               </div>
             </div>
@@ -352,7 +353,7 @@ export default function ContactForm() {
             © 2025 CHULACHAK TUBSIKHAEW — ALL RIGHTS RESERVED
           </div>
           <div className="font-mono text-[9px] tracking-widest text-muted-foreground">
-            BUILT WITH <span className="text-primary">✦</span> NEO-BRUTALIST PRECISION
+            BUILT WITH <Sparkles size={12} className="text-primary inline mx-1" /> NEO-BRUTALIST PRECISION
           </div>
         </div>
       </div>
