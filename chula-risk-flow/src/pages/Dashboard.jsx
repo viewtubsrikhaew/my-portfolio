@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { BarChart2, Palette, Shield, Building2, Briefcase, Bot, Globe, TrendingUp, Layers, Megaphone, Code2, Award } from 'lucide-react';
+import { BarChart2, Palette, Shield, Building2, Briefcase, Bot, Globe, TrendingUp, Layers, Megaphone, Code2, Award, Asterisk, ArrowUpRight } from 'lucide-react';
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
 const PROJECT_CATEGORIES = [
@@ -108,7 +108,7 @@ export default function Dashboard() {
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-primary/30 flex items-center justify-between px-6 md:px-12 py-4">
         <Link to="/" className="font-inter font-black text-xl tracking-tighter hover:text-primary transition-colors">
-          CT<span className="text-primary">✳</span>
+          CT<Asterisk size={18} className="text-primary inline" />
         </Link>
         <div className="flex items-center gap-4">
           <Link to="/about" className="font-mono text-[10px] tracking-widest text-muted-foreground hover:text-primary transition-colors">ABOUT</Link>
@@ -233,7 +233,7 @@ export default function Dashboard() {
                 whileHover={{ x: 4, boxShadow: '6px 6px 0 #FF5F1F' }}
                 className="inline-flex items-center gap-2 border-2 border-primary/50 text-foreground font-inter font-black text-sm tracking-widest px-8 py-4 cursor-pointer hover:border-primary transition-colors"
               >
-                ABOUT ME ↗
+                ABOUT ME <ArrowUpRight size={16} className="inline" />
               </motion.div>
             </Link>
           </div>
