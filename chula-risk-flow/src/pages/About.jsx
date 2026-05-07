@@ -284,7 +284,7 @@ export default function About() {
                 {[
                   { l: 'EMAIL', v: 'viewtubsikhaew@gmail.com', href: 'mailto:viewtubsikhaew@gmail.com' },
                   { l: 'PHONE', v: '094-362-8554', href: 'tel:0943628554' },
-                  { l: 'LINKEDIN', v: '/in/chulachak-tubsikhaew', href: 'https://linkedin.com/in/chulachak-tubsikhaew' },
+                  { l: 'LINKEDIN', v: '/in/chulachak-tubsikhaew', href: 'https://www.linkedin.com/in/chulachak-tubsikhaew-2134153bb' },
                   { l: 'LOCATION', v: 'Bangkok, Thailand', href: null },
                 ].map((item, i) => (
                   <div key={i} className="border-t border-primary/20 py-4 flex justify-between items-center">
