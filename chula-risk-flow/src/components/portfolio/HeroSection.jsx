@@ -242,7 +242,7 @@ export default function HeroSection() {
               VIEW WORK ↓
             </motion.button>
             <motion.a
-              href="https://media.base44.com/images/public/69f811de984f384ae6db76b7/6d4e1b344_RESUME_EN.jpg"
+              href="https://drive.google.com/uc?export=download&id=1PbKCEH4qyxhyhs-chvStlTBhECdRB5lU"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ x: 4, boxShadow: '6px 6px 0 #FF5F1F' }}
