@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { base44 } from '@/api/base44Client';
 import BlockReveal from './BlockReveal';
 import { Asterisk, ArrowUpRight, Sparkles } from 'lucide-react';
 
@@ -36,12 +37,7 @@ export default function ContactForm() {
     }
     setLoading(true);
     setError('');
-    const res = await fetch('https://formspree.io/f/xqenlgzp', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(form),
-});
-if (!res.ok) throw new Error('Failed');
+    await base44.entities.ContactInquiry.create({ ...form, status: 'new' });
     setLoading(false);
     setSent(true);
   };
@@ -81,7 +77,7 @@ if (!res.ok) throw new Error('Failed');
             {[
               { label: 'EMAIL', value: 'viewtubsikhaew@gmail.com', href: 'mailto:viewtubsikhaew@gmail.com' },
               { label: 'PHONE', value: '094-362-8554', href: 'tel:0943628554' },
-              { label: 'LINKEDIN', value: '/in/chulachak-tubsikhaew', href: 'https://linkedin.com/in/chulachak-tubsikhaew' },
+              { label: 'LINKEDIN', value: '/in/chulachak-tubsikhaew', href: 'https://www.linkedin.com/in/chulachak-tubsikhaew-2134153bb' },
               { label: 'LOCATION', value: 'Bangkok, Thailand', href: null },
             ].map((item, i) => (
               <motion.div
@@ -290,7 +286,7 @@ if (!res.ok) throw new Error('Failed');
               <div className="font-mono text-[9px] tracking-[0.3em] text-primary mb-6">// CONNECT</div>
               <div className="flex flex-col gap-2">
                 <motion.a
-                  href="https://linkedin.com/in/chulachak-tubsikhaew"
+                  href="https://www.linkedin.com/in/chulachak-tubsikhaew-2134153bb"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ x: 4, boxShadow: '6px 6px 0 #FF5F1F' }}
