@@ -13,7 +13,7 @@ const SOCIAL = [
   {
     label: 'LINKEDIN',
     Icon: Linkedin,
-    href: 'https://linkedin.com/in/chulachak-tubsikhaew',
+    href: 'https://www.linkedin.com/in/chulachak-tubsikhaew-2134153bb',
     color: 'bg-background text-primary',
     border: 'border-primary',
   },
@@ -51,7 +51,7 @@ export default function FloatingContact() {
               <motion.a
                 key={s.label}
                 href={s.href}
-                target={s.href.startsWith('mailto') ? undefined : '_blank'}
+                target={s.href.startsWith('mailto') ? '_self' : '_blank'}
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
