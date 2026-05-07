@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { base44 } from '@/api/base44Client';
 import BlockReveal from './BlockReveal';
 import { Asterisk, ArrowUpRight, Sparkles } from 'lucide-react';
 
@@ -37,7 +36,12 @@ export default function ContactForm() {
     }
     setLoading(true);
     setError('');
-    await base44.entities.ContactInquiry.create({ ...form, status: 'new' });
+    const res = await fetch('https://formspree.io/f/xxxxxxxx', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(form),
+});
+if (!res.ok) throw new Error('Failed');
     setLoading(false);
     setSent(true);
   };
