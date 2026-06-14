@@ -14,6 +14,14 @@ const certifications = [
     professional: true,
     img: 'https://media.base44.com/images/public/69f811de984f384ae6db76b7/8cbbfc995_IMG_7136.jpg',
     driveFolder: 'https://drive.google.com/drive/folders/1AyLS6kG8sng5TxcJDizRBCVPxR38P468',
+    subImgs: [
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426199/S__11141140_0_whwqg6.jpg',
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426198/S__11141142_0_lumq0s.jpg',
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426198/S__11141138_0_xvzomh.jpg',
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426197/S__11141144_0_rjtvrv.jpg',
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426197/S__11141143_0_foswfq.jpg',
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426196/S__11141141_0_hvjfgt.jpg',
+    ],
   },
   {
     title: 'Google Data Analytics',
@@ -24,6 +32,16 @@ const certifications = [
     professional: true,
     img: 'https://media.base44.com/images/public/69f811de984f384ae6db76b7/9af1ccdd3_IMG_7149.jpg',
     driveFolder: 'https://drive.google.com/drive/folders/1AyLS6kG8sng5TxcJDizRBCVPxR38P468',
+    subImgs: [
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426018/S__11141134_0_lohdwn.jpg',
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426018/S__11141133_0_tj6ccm.jpg',
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426018/S__11141130_0_gfxsnb.jpg',
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426017/S__11141131_0_eda9ek.jpg',
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426017/S__11141132_0_jcyf5m.jpg',
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426017/S__11141135_0_lyhx0q.jpg',
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426017/S__11141137_0_zfxnb6.jpg',
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426017/S__11141136_0_zgcqcy.jpg',
+    ],
   },
   {
     title: 'Google Business Intelligence',
@@ -34,6 +52,12 @@ const certifications = [
     professional: true,
     img: 'https://res.cloudinary.com/dduc3pox4/image/upload/v1781420491/S__11141124_j9ge3l.jpg',
     driveFolder: 'https://drive.google.com/drive/folders/1AyLS6kG8sng5TxcJDizRBCVPxR38P468',
+    subImgs: [
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426302/S__11141149_0_ia88wu.jpg',
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426302/S__11141145_0_z1naid.jpg',
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426302/S__11141148_0_hbiptw.jpg',
+      'https://res.cloudinary.com/dduc3pox4/image/upload/v1781426303/S__11141147_0_nkxmrf.jpg',
+    ],
   },
   {
     title: 'Bloomberg Market Concepts',
@@ -65,11 +89,6 @@ const education = [
 
 function CertCard({ cert, index }) {
   const [flipped, setFlipped] = useState(false);
-  const [imgIndex, setImgIndex] = useState(0);
-
-  const hasMultipleImages = cert.imgs && cert.imgs.length > 1;
-  const currentImg = cert.imgs ? cert.imgs[imgIndex] : cert.img;
-  const currentStyle = cert.imgStyles ? cert.imgStyles[imgIndex] : undefined;
 
   return (
     <motion.div
@@ -80,29 +99,23 @@ function CertCard({ cert, index }) {
       whileHover={{ y: -6, boxShadow: '8px 8px 0 #FF5F1F', scale: 1.02 }}
       onClick={() => setFlipped(!flipped)}
       className="relative border border-primary/30 hover:border-primary cursor-pointer overflow-hidden transition-colors"
-      transition={{ type: 'spring', stiffness: 300 }}
     >
       <AnimatePresence mode="wait">
         {!flipped ? (
           <motion.div key="front" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="p-5">
-            {/* cert image if available */}
-            {currentImg && (
-              <div className="mb-3 overflow-hidden border border-primary/20 relative" style={{ filter: 'grayscale(0.3) contrast(1.1)' }}>
+            {/* Main cert image */}
+            {cert.img && (
+              <div className="mb-3 overflow-hidden border border-primary/20" style={{ filter: 'grayscale(0.3) contrast(1.1)' }}>
                 <img
-                  src={currentImg}
+                  src={cert.img}
                   alt={cert.title}
                   className="w-full h-24 object-cover object-top protected"
-                  style={currentStyle ? { transform: 'rotate(90deg)' } : undefined}
                   draggable={false}
                   onContextMenu={(e) => e.preventDefault()}
                 />
-                {hasMultipleImages && (
-                  <div className="absolute bottom-1 right-1 font-mono text-[7px] bg-background/80 text-primary px-1.5 py-0.5">
-                    {imgIndex + 1}/{cert.imgs.length}
-                  </div>
-                )}
               </div>
             )}
+
             <div className="flex items-start justify-between gap-2 mb-2">
               <div className="font-mono text-[9px] tracking-widest text-primary">{cert.issuer}</div>
               {cert.professional && (
@@ -111,32 +124,42 @@ function CertCard({ cert, index }) {
             </div>
             <div className="font-inter font-bold text-sm text-foreground leading-tight">{cert.title}</div>
             <div className="font-mono text-[9px] text-muted-foreground mt-1">{cert.subtitle}</div>
+
+            {/* Sub-cert image grid */}
+            {cert.subImgs && cert.subImgs.length > 0 && (
+              <div className="mt-3 border-t border-primary/15 pt-3">
+                <div className="font-mono text-[8px] tracking-widest text-primary/60 mb-2">
+                  // {cert.subImgs.length} COURSES COMPLETED
+                </div>
+                <div className="grid grid-cols-3 gap-1">
+                  {cert.subImgs.map((src, i) => (
+                    <div key={i} className="overflow-hidden border border-primary/10" style={{ filter: 'grayscale(0.4) contrast(1.05)' }}>
+                      <img
+                        src={src}
+                        alt={`${cert.title} course ${i + 1}`}
+                        className="w-full h-10 object-cover object-top protected"
+                        draggable={false}
+                        onContextMenu={(e) => e.preventDefault()}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="flex items-center justify-between mt-4">
               <span className="font-mono text-[9px] tracking-widest text-muted-foreground">{cert.year}</span>
-              <div className="flex items-center gap-2">
-                {hasMultipleImages && (
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setImgIndex((i) => (i + 1) % cert.imgs.length);
-                    }}
-                    className="font-mono text-[8px] tracking-widest border border-primary/30 text-primary px-1.5 py-0.5 hover:border-primary transition-colors"
-                  >
-                    NEXT
-                  </button>
-                )}
-                {cert.driveFolder && (
-                  <a
-                    href={cert.driveFolder}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="font-mono text-[9px] tracking-widest text-primary hover:underline"
-                  >
-                    VIEW ↗
-                  </a>
-                )}
-              </div>
+              {cert.driveFolder && (
+                <a
+                  href={cert.driveFolder}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="font-mono text-[9px] tracking-widest text-primary hover:underline"
+                >
+                  VIEW ↗
+                </a>
+              )}
             </div>
           </motion.div>
         ) : (
