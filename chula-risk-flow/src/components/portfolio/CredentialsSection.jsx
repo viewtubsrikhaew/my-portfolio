@@ -109,7 +109,7 @@ function CertCard({ cert, index }) {
                 <img
                   src={cert.img}
                   alt={cert.title}
-                  className="w-full h-24 object-cover object-top protected"
+                  className="w-full object-contain protected"
                   draggable={false}
                   onContextMenu={(e) => e.preventDefault()}
                 />
